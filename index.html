@@ -573,6 +573,19 @@ footer{
 }
 .bulk-icon{font-size:1.1rem;flex-shrink:0;margin-top:0.05rem}
 .bulk-note strong{color:var(--accent)}
+
+/* ─── CUSTOM CHIPS ─── */
+.custom-chips{
+  display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem;
+}
+.custom-chip{
+  font-size:0.78rem;font-weight:600;
+  padding:0.45rem 1rem;border-radius:20px;
+  background:rgba(232,255,71,0.08);
+  border:1px solid rgba(232,255,71,0.25);
+  color:var(--accent);
+  white-space:nowrap;
+}
 </style>
 </head>
 <body>
@@ -598,7 +611,7 @@ footer{
   <div class="hero-left">
     <p class="eyebrow">FM Signs — Rural Safety</p>
     <h1 class="hero-h1">Keep Horse Riders <mark>Safe</mark> on Rural Roads</h1>
-    <p class="hero-p">A bold, high-visibility warning sign engineered for private rural land — alerting drivers to slow down and pass wide when horses are present.</p>
+    <p class="hero-p">A bold, high-visibility warning sign for private rural land — fully customisable. Change the speed, wording, or layout to suit your location. No design skills needed, just tell us what you need.</p>
     <div class="hero-actions">
       <a href="#register" class="btn btn-accent">Register Your Interest →</a>
       <a href="#pricing" class="btn btn-ghost">View Pricing</a>
@@ -618,7 +631,7 @@ footer{
         <div class="floating-tag">In High Demand</div>
         <img
           class="sign-img"
-          src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/asset/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2007_00_28%20PM.png"
+          src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/fmsigns/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2008_11_54%20PM.png"
           alt="FM Signs Horse Rider Safety Warning Sign — Please pass wide and slow"
         />
         <div class="sign-badges">
@@ -719,7 +732,7 @@ footer{
       <div class="reveal">
         <div class="detail-img-wrap">
           <img
-            src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/asset/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2007_00_28%20PM.png"
+            src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/fmsigns/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2008_11_54%20PM.png"
             alt="Horse Rider Safety Sign close-up"
           />
           <div class="detail-specs">
@@ -734,11 +747,17 @@ footer{
       </div>
       <div class="reveal reveal-d1">
         <span class="tag">Product Detail</span>
-        <h2 class="section-h2">A Sign That Commands Attention</h2>
-        <p class="section-p">The bold, unmistakable design draws the eye immediately — combining the recognised horse-and-rider silhouette with a clear, direct instruction that every driver understands at a glance.</p>
-        <p class="section-p" style="margin-top:1rem">Available in A4 and A3, each sign is individually produced to the highest print standard. The 2mm board provides rigidity without weight, making it perfect for gate and post mounting on private land.</p>
-        <div style="margin-top:2.5rem">
-          <a href="#register" class="btn btn-accent">Register Your Interest →</a>
+        <h2 class="section-h2">Made to Your Specification</h2>
+        <p class="section-p">The sign shown is our most popular design — but nothing is fixed. The speed shown, the wording, the layout — all of it can be changed. Just tell us what you need when you register your interest and we'll produce it exactly as you want it.</p>
+        <p class="section-p" style="margin-top:1rem">Available in A4 and A3, each sign is produced individually to order. Simply note your preferred changes in the form and we'll confirm the design with you before printing.</p>
+        <div class="custom-chips">
+          <span class="custom-chip">✏️ Change the speed</span>
+          <span class="custom-chip">💬 Change the wording</span>
+          <span class="custom-chip">🐄 Different subject</span>
+          <span class="custom-chip">📐 Custom size</span>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="#register" class="btn btn-accent">Customise &amp; Register Interest →</a>
         </div>
       </div>
     </div>
@@ -816,7 +835,7 @@ footer{
     <div class="form-header reveal">
       <span class="tag">Register Interest</span>
       <h2 class="section-h2">Be Among the First to Order</h2>
-      <p class="section-p">High demand — leave your details and we'll be in touch within 2–5 working days to confirm your order. No payment required now.</p>
+      <p class="section-p">High demand — leave your details below. Want to change the speed, wording, or anything else on the sign? Just let us know in the form and we'll sort it. No payment required now.</p>
     </div>
     <div class="form-card reveal">
       <form id="interestForm" action="https://formspree.io/f/mzdwkewy" method="POST">
@@ -889,7 +908,7 @@ footer{
         </div>
 
         <div class="fg">
-          <label class="fl" for="custom_sign">Need a different sign? Tell us what you have in mind</label>
+          <label class="fl" for="custom_sign">Customisations or different sign? Tell us here</label>
           <textarea id="custom_sign" name="custom_sign_request" placeholder="e.g. "Slow — Livestock crossing", "Private road — no entry", or describe your idea and we'll get back to you with a quote…"></textarea>
         </div>
 
