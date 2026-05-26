@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horse Rider Safety Sign | FM Signs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #0a0d14;
+  --deep:    #0f1520;
+  --panel:   #141b2a;
+  --card:    #1a2236;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --accent:  #e8ff47;
+  --accent2: #b8f000;
+  --blue:    #4f8fff;
+  --muted:   rgba(255,255,255,0.45);
+  --body:    rgba(255,255,255,0.72);
+  --white:   #ffffff;
+  --red:     #ff4545;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Instrument Sans',system-ui,sans-serif;
+  background:var(--ink);
+  color:var(--white);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:68px;
+  background:rgba(10,13,20,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;
+  color:var(--white);text-decoration:none;letter-spacing:-0.01em;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.nav-logo-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);display:inline-block;
+  box-shadow:0 0 12px var(--accent);
+}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.82rem;font-weight:500;letter-spacing:0.01em;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  background:var(--accent) !important;color:var(--ink) !important;
+  font-weight:700 !important;font-size:0.8rem !important;
+  padding:0.5rem 1.25rem;border-radius:6px;
+  transition:opacity 0.2s !important;
+}
+.nav-cta:hover{opacity:0.85 !important}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;padding-top:68px;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+.hero-glow{
+  position:absolute;top:-200px;left:-200px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(232,255,71,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4rem 5rem 6rem;position:relative;z-index:2;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.75rem;
+  opacity:0;animation:up 0.7s 0.1s forwards;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent)}
+.hero-h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(3rem,5vw,4.5rem);line-height:1.04;
+  letter-spacing:-0.03em;color:var(--white);
+  margin-bottom:1.5rem;
+  opacity:0;animation:up 0.7s 0.25s forwards;
+}
+.hero-h1 mark{
+  background:none;color:var(--accent);
+  position:relative;display:inline-block;
+}
+.hero-p{
+  font-size:1.05rem;line-height:1.75;color:var(--body);
+  max-width:420px;margin-bottom:2.5rem;
+  opacity:0;animation:up 0.7s 0.4s forwards;
+}
+.hero-actions{
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:up 0.7s 0.55s forwards;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+  font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:0.88rem;
+  letter-spacing:0.01em;border:none;cursor:pointer;
+  border-radius:8px;padding:0.85rem 1.75rem;
+  text-decoration:none;transition:all 0.2s;
+}
+.btn-accent{background:var(--accent);color:var(--ink)}
+.btn-accent:hover{background:#f5ff70;transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,255,71,0.25)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--border2)}
+.btn-ghost:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.2)}
+.trust-pills{
+  display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:2rem;
+  opacity:0;animation:up 0.7s 0.7s forwards;
+}
+.pill{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.05em;
+  padding:0.35rem 0.85rem;border-radius:20px;
+  background:rgba(255,255,255,0.06);color:var(--muted);
+  border:1px solid var(--border);
+}
+
+/* Hero right */
+.hero-right{
+  display:flex;align-items:center;justify-content:center;
+  padding:5rem 5rem 5rem 3rem;position:relative;z-index:2;
+}
+.product-stage{
+  position:relative;
+  opacity:0;animation:fadeIn 1s 0.4s forwards;
+}
+.product-stage::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(79,143,255,0.08) 0%,transparent 65%);
+  pointer-events:none;
+}
+.sign-frame{
+  position:relative;border-radius:12px;
+  background:var(--card);
+  border:1px solid var(--border2);
+  padding:1.5rem;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.04);
+}
+.sign-img{
+  width:100%;max-width:380px;display:block;
+  border-radius:8px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  transition:transform 0.5s cubic-bezier(0.23,1,0.32,1);
+}
+.sign-frame:hover .sign-img{transform:scale(1.02)}
+.sign-badges{
+  display:flex;justify-content:space-between;
+  margin-top:1.25rem;gap:0.75rem;
+}
+.sign-badge{
+  flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--border);
+  border-radius:8px;padding:0.75rem;text-align:center;
+  transition:background 0.2s,border-color 0.2s;cursor:default;
+}
+.sign-badge:hover{background:rgba(232,255,71,0.06);border-color:rgba(232,255,71,0.2)}
+.sign-badge-size{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);
+}
+.sign-badge-dim{font-size:0.68rem;color:var(--muted);margin:0.1rem 0}
+.sign-badge-price{font-size:0.9rem;font-weight:700;color:var(--accent)}
+.floating-tag{
+  position:absolute;top:-16px;right:20px;
+  background:var(--accent);color:var(--ink);
+  font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.9rem;border-radius:20px;
+  box-shadow:0 4px 16px rgba(232,255,71,0.35);
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar{
+  background:var(--panel);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:2rem 6rem;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;
+}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;
+  color:var(--white);letter-spacing:-0.03em;
+}
+.stat-num span{color:var(--accent)}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:0.2rem}
+
+/* ─── SECTION BASE ─── */
+.section{padding:7rem 6rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.tag{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.25rem;
+}
+.tag::before{content:'';width:16px;height:2px;background:var(--accent);border-radius:1px}
+.section-h2{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;
+  letter-spacing:-0.03em;color:var(--white);
+  margin-bottom:1.25rem;
+}
+.section-p{font-size:1rem;line-height:1.75;color:var(--body);max-width:560px}
+
+/* ─── WHY ─── */
+.why-section{background:var(--ink)}
+.why-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-text .section-p{margin-bottom:1rem}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.why-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:1.5rem;
+  transition:border-color 0.2s,transform 0.2s;
+}
+.why-card:hover{border-color:var(--border2);transform:translateY(-3px)}
+.why-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(232,255,71,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;margin-bottom:1rem;
+}
+.why-card h4{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:0.4rem}
+.why-card p{font-size:0.82rem;line-height:1.6;color:var(--muted)}
+
+/* ─── MATERIAL ─── */
+.material-section{background:var(--panel)}
+.material-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.material-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.material-card{
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:12px;padding:2rem;
+  position:relative;overflow:hidden;
+  transition:background 0.25s,border-color 0.25s;
+}
+.material-card::after{
+  content:'';position:absolute;
+  inset:0;border-radius:12px;
+  background:linear-gradient(135deg,rgba(232,255,71,0.04),transparent);
+  opacity:0;transition:opacity 0.25s;
+}
+.material-card:hover{background:rgba(255,255,255,0.05);border-color:var(--border2)}
+.material-card:hover::after{opacity:1}
+.mat-num{
+  font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;
+  color:rgba(255,255,255,0.05);line-height:1;margin-bottom:1rem;
+}
+.material-card h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.6rem}
+.material-card p{font-size:0.85rem;line-height:1.7;color:var(--muted)}
+
+/* ─── PRODUCT DETAIL ─── */
+.detail-section{background:var(--ink)}
+.detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.detail-img-wrap{
+  border-radius:16px;overflow:hidden;
+  background:var(--card);border:1px solid var(--border);
+  padding:2.5rem;
+  box-shadow:0 24px 64px rgba(0,0,0,0.35);
+}
+.detail-img-wrap img{width:100%;border-radius:8px;display:block}
+.detail-specs{margin-top:2rem}
+.spec-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.85rem 0;border-bottom:1px solid var(--border);
+  font-size:0.88rem;
+}
+.spec-row:last-child{border-bottom:none}
+.spec-label{color:var(--muted)}
+.spec-val{font-weight:600;color:var(--white)}
+
+/* ─── PRICING ─── */
+.pricing-section{background:var(--panel)}
+.pricing-header{text-align:center;margin-bottom:3.5rem}
+.pricing-header .section-p{margin:0 auto}
+.pricing-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:760px;margin:0 auto 2rem}
+.p-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:2.5rem;
+  position:relative;overflow:hidden;
+  transition:transform 0.25s,box-shadow 0.25s;
+}
+.p-card:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,0.35)}
+.p-card.best{
+  background:linear-gradient(135deg,#15202f 0%,#1a2840 100%);
+  border-color:rgba(232,255,71,0.3);
+}
+.p-card.best::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+}
+.best-label{
+  position:absolute;top:1.25rem;right:1.25rem;
+  background:var(--accent);color:var(--ink);
+  font-size:0.62rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.25rem 0.7rem;border-radius:20px;
+}
+.p-size{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;
+  color:var(--muted);letter-spacing:0.05em;margin-bottom:0.25rem;
+}
+.p-dims{font-size:0.75rem;color:var(--muted);margin-bottom:1.5rem}
+.p-price{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:3.5rem;letter-spacing:-0.04em;line-height:1;
+  color:var(--white);margin-bottom:0.4rem;
+}
+.p-price sup{font-size:1.4rem;vertical-align:super;color:var(--muted);font-weight:600}
+.p-vat{font-size:0.78rem;color:var(--muted);margin-bottom:2rem;font-style:italic}
+.p-features{list-style:none;margin-bottom:2rem}
+.p-features li{
+  font-size:0.85rem;color:var(--body);
+  padding:0.55rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.p-features li:last-child{border-bottom:none}
+.p-features li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
+.pricing-note{
+  text-align:center;font-size:0.82rem;
+  color:var(--muted);font-style:italic;max-width:600px;margin:0 auto;
+}
+
+/* ─── LEGAL ─── */
+.legal-section{
+  background:var(--deep);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:4rem 6rem;
+}
+.legal-inner{max-width:900px;margin:0 auto}
+.legal-banner{
+  display:flex;gap:1.5rem;align-items:flex-start;
+  background:rgba(255,69,69,0.06);
+  border:1px solid rgba(255,69,69,0.2);
+  border-radius:12px;padding:2rem;margin-bottom:2rem;
+}
+.legal-icon-wrap{
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  background:rgba(255,69,69,0.12);border:1px solid rgba(255,69,69,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+}
+.legal-banner h3{
+  font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+  color:var(--red);margin-bottom:0.5rem;
+}
+.legal-banner p{font-size:0.88rem;line-height:1.7;color:var(--body)}
+.legal-detail{
+  background:rgba(255,255,255,0.03);border:1px solid var(--border);
+  border-radius:12px;padding:1.75rem;
+}
+.legal-detail p{font-size:0.86rem;line-height:1.8;color:var(--muted);margin-bottom:0.85rem}
+.legal-detail p:last-child{margin-bottom:0}
+.legal-detail strong{color:var(--body)}
+.legal-detail ul{margin:0.5rem 0 0.85rem 1.5rem}
+.legal-detail li{font-size:0.86rem;color:var(--muted);line-height:1.7;margin-bottom:0.2rem}
+
+/* ─── FORM ─── */
+.form-section{background:var(--ink);padding:7rem 6rem}
+.form-outer{max-width:780px;margin:0 auto}
+.form-header{text-align:center;margin-bottom:3.5rem}
+.form-header .section-p{margin:0 auto}
+.form-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:3rem;
+  box-shadow:0 24px 64px rgba(0,0,0,0.25);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.25rem}
+.fg{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.25rem}
+.fg.half{margin-bottom:0}
+label.fl{
+  font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);
+}
+input,select,textarea{
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  padding:0.8rem 1rem;
+  font-family:'Instrument Sans',sans-serif;
+  font-size:0.92rem;color:var(--white);
+  outline:none;width:100%;
+  transition:border-color 0.2s,background 0.2s;
+}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.25)}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--accent);background:rgba(232,255,71,0.04);
+}
+select option{background:var(--panel);color:var(--white)}
+textarea{resize:vertical;min-height:100px}
+.size-sel{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.sz-opt{position:relative}
+.sz-opt input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+.sz-opt label{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:1.4rem 1rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);border-radius:10px;
+  cursor:pointer;gap:0.2rem;
+  transition:all 0.2s;
+}
+.sz-opt input[type=radio]:checked + label{
+  border-color:var(--accent);background:rgba(232,255,71,0.07);
+}
+.sz-size{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:var(--white)}
+.sz-dim{font-size:0.68rem;color:var(--muted);letter-spacing:0.05em}
+.sz-price{font-size:0.9rem;font-weight:700;color:var(--accent)}
+.consent-row{display:flex;align-items:flex-start;gap:0.85rem;margin:1rem 0}
+.consent-row input[type=checkbox]{
+  width:18px;height:18px;flex-shrink:0;margin-top:2px;
+  accent-color:var(--accent);cursor:pointer;
+  background:none;border:none;padding:0;
+}
+.consent-row label.fl{
+  font-size:0.82rem;text-transform:none;letter-spacing:0;
+  color:var(--body);font-weight:400;cursor:pointer;
+  line-height:1.6;
+}
+.consent-row label.fl a{color:var(--accent);text-decoration:none}
+.consent-row label.fl a:hover{text-decoration:underline}
+.form-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;margin-top:1.75rem;flex-wrap:wrap;
+}
+.form-note{font-size:0.78rem;color:var(--muted);line-height:1.5;font-style:italic}
+.btn-submit{
+  background:var(--accent);color:var(--ink);
+  font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.88rem;
+  letter-spacing:0.02em;padding:0.9rem 2rem;
+  border:none;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;gap:0.5rem;white-space:nowrap;
+  transition:all 0.2s;flex-shrink:0;
+}
+.btn-submit:hover{background:#f5ff70;transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,255,71,0.25)}
+.btn-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.divider{height:1px;background:var(--border);margin:1.5rem 0}
+
+/* ─── FAQ ─── */
+.faq-section{background:var(--panel);padding:7rem 6rem}
+.faq-layout{max-width:760px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:3.5rem}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-btn{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem 0;gap:1rem;text-align:left;
+  font-family:'Instrument Sans',sans-serif;font-size:0.97rem;
+  font-weight:600;color:var(--white);
+  transition:color 0.2s;
+}
+.faq-btn:hover{color:var(--accent)}
+.faq-chevron{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;color:var(--muted);
+  transition:transform 0.3s,border-color 0.2s,background 0.2s;
+}
+.faq-item.open .faq-chevron{
+  transform:rotate(45deg);
+  border-color:rgba(232,255,71,0.3);background:rgba(232,255,71,0.08);color:var(--accent);
+}
+.faq-ans{
+  font-size:0.9rem;line-height:1.8;color:var(--muted);
+  max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;
+}
+.faq-item.open .faq-ans{max-height:300px;padding-bottom:1.4rem}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--deep);
+  border-top:1px solid var(--border);
+  padding:3rem 6rem;
+}
+.footer-top{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:2rem;flex-wrap:wrap;gap:1.5rem;
+}
+.footer-brand{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;
+  color:var(--white);display:flex;align-items:center;gap:0.4rem;
+}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{
+  padding-top:1.5rem;border-top:1px solid var(--border);
+  font-size:0.77rem;color:rgba(255,255,255,0.3);line-height:1.7;
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.08s}
+.reveal-d2{transition-delay:0.16s}
+.reveal-d3{transition-delay:0.24s}
+
+/* ─── ANIMATIONS ─── */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ─── MOBILE ─── */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:4rem 2rem 2rem}
+  .hero-right{padding:2rem 2rem 4rem}
+  .sign-img{max-width:300px}
+  .stats-bar{grid-template-columns:1fr 1fr;padding:2rem 2rem}
+  .section,.form-section,.faq-section,.legal-section,footer{padding:4rem 1.5rem}
+  .why-layout,.detail-layout,.pricing-cards,.material-grid,.form-row,.size-sel{grid-template-columns:1fr}
+  .material-header{flex-direction:column;align-items:flex-start}
+  .footer-top{flex-direction:column}
+  .footer-links{flex-wrap:wrap}
+  .form-foot{flex-direction:column;align-items:stretch}
+  .btn-submit{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><span class="nav-logo-dot"></span>FM Signs</a>
+  <ul class="nav-links">
+    <li><a href="#product">Product</a></li>
+    <li><a href="#material">Material</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="#register" class="nav-cta">Register Interest</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="product">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <p class="eyebrow">FM Signs — Rural Safety</p>
+    <h1 class="hero-h1">Keep Horse Riders <mark>Safe</mark> on Rural Roads</h1>
+    <p class="hero-p">A bold, high-visibility warning sign engineered for private rural land — alerting drivers to slow down and pass wide when horses are present.</p>
+    <div class="hero-actions">
+      <a href="#register" class="btn btn-accent">Register Your Interest →</a>
+      <a href="#pricing" class="btn btn-ghost">View Pricing</a>
+    </div>
+    <div class="trust-pills">
+      <span class="pill">2mm Foamex</span>
+      <span class="pill">UV Print</span>
+      <span class="pill">Weather Resistant</span>
+      <span class="pill">UK Made</span>
+      <span class="pill">A4 &amp; A3</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="product-stage">
+      <div class="sign-frame">
+        <div class="floating-tag">In High Demand</div>
+        <img
+          class="sign-img"
+          src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/asset/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2007_00_28%20PM.png"
+          alt="FM Signs Horse Rider Safety Warning Sign — Please pass wide and slow"
+        />
+        <div class="sign-badges">
+          <div class="sign-badge">
+            <div class="sign-badge-size">A4</div>
+            <div class="sign-badge-dim">210 × 297 mm</div>
+            <div class="sign-badge-price">£45</div>
+          </div>
+          <div class="sign-badge">
+            <div class="sign-badge-size">A3</div>
+            <div class="sign-badge-dim">297 × 420 mm</div>
+            <div class="sign-badge-price">£55</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat reveal"><div class="stat-num">2<span>mm</span></div><div class="stat-label">Foamex Thickness</div></div>
+  <div class="stat reveal reveal-d1"><div class="stat-num">2<span>×</span></div><div class="stat-label">Sizes Available</div></div>
+  <div class="stat reveal reveal-d2"><div class="stat-num">UV<span>+</span></div><div class="stat-label">Print Technology</div></div>
+  <div class="stat reveal reveal-d3"><div class="stat-num"><span>£</span>45</div><div class="stat-label">Starting Price</div></div>
+</div>
+
+<!-- WHY -->
+<section class="section why-section">
+  <div class="section-inner">
+    <div class="why-layout">
+      <div class="reveal">
+        <span class="tag">Why This Sign?</span>
+        <h2 class="section-h2">Designed Where It Matters Most</h2>
+        <p class="section-p">Horse riders face genuine danger on country lanes every day. Vehicles approaching at speed give horses almost no reaction time — a startled horse can unseat a rider in an instant.</p>
+        <p class="section-p" style="margin-top:1rem">After strong demand seen across equestrian communities online, FM Signs developed this purpose-built warning sign for private farms, stables, paddocks, and bridleways.</p>
+      </div>
+      <div class="why-cards">
+        <div class="why-card reveal">
+          <div class="why-icon">🐴</div>
+          <h4>Rider Safety</h4>
+          <p>Prominently warns drivers of horse activity ahead, buying critical reaction time on narrow rural lanes.</p>
+        </div>
+        <div class="why-card reveal reveal-d1">
+          <div class="why-icon">👁️</div>
+          <h4>High Visibility</h4>
+          <p>High-contrast design readable at distance in all weather and light conditions.</p>
+        </div>
+        <div class="why-card reveal reveal-d2">
+          <div class="why-icon">📐</div>
+          <h4>Two Sizes</h4>
+          <p>A4 for posts and gates; A3 for maximum impact at junctions and lane entrances.</p>
+        </div>
+        <div class="why-card reveal reveal-d3">
+          <div class="why-icon">🔧</div>
+          <h4>Simple Install</h4>
+          <p>Mounts via screws, cable ties, or adhesive pads on posts, fencing, or gates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIAL -->
+<section class="section material-section" id="material">
+  <div class="section-inner">
+    <div class="material-header">
+      <div class="reveal">
+        <span class="tag">Premium Material</span>
+        <h2 class="section-h2">Built to Last in Any<br>UK Weather</h2>
+      </div>
+      <p class="section-p reveal" style="max-width:320px;text-align:right">2mm Foamex PVC foam board — the industry standard for professional outdoor signage.</p>
+    </div>
+    <div class="material-grid">
+      <div class="material-card reveal">
+        <div class="mat-num">01</div>
+        <h4>Warp-Resistant Construction</h4>
+        <p>PVC foam board resists warping, cracking, and moisture ingress, keeping your sign looking sharp through rain, sun, and frost.</p>
+      </div>
+      <div class="material-card reveal reveal-d1">
+        <div class="mat-num">02</div>
+        <h4>UV-Printed Graphics</h4>
+        <p>The smooth Foamex surface delivers sharp, vibrant full-colour printing that won't fade or peel with outdoor exposure.</p>
+      </div>
+      <div class="material-card reveal reveal-d2">
+        <div class="mat-num">03</div>
+        <h4>Lightweight & Versatile</h4>
+        <p>Easy to transport, handle, and install without specialist tools. Compatible with screws, cable ties, or adhesive mounting systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT DETAIL -->
+<section class="section detail-section">
+  <div class="section-inner">
+    <div class="detail-layout">
+      <div class="reveal">
+        <div class="detail-img-wrap">
+          <img
+            src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/asset/refs/heads/main/ChatGPT%20Image%20May%2026%2C%202026%2C%2007_00_28%20PM.png"
+            alt="Horse Rider Safety Sign close-up"
+          />
+          <div class="detail-specs">
+            <div class="spec-row"><span class="spec-label">Material</span><span class="spec-val">2mm Foamex PVC Foam</span></div>
+            <div class="spec-row"><span class="spec-label">Print</span><span class="spec-val">Full-colour UV inkjet</span></div>
+            <div class="spec-row"><span class="spec-label">Finish</span><span class="spec-val">Smooth gloss-ready surface</span></div>
+            <div class="spec-row"><span class="spec-label">Outdoor rated</span><span class="spec-val">Yes — all UK weather</span></div>
+            <div class="spec-row"><span class="spec-label">Fixing</span><span class="spec-val">Screws / ties / adhesive</span></div>
+            <div class="spec-row"><span class="spec-label">Origin</span><span class="spec-val">UK produced</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <span class="tag">Product Detail</span>
+        <h2 class="section-h2">A Sign That Commands Attention</h2>
+        <p class="section-p">The bold, unmistakable design draws the eye immediately — combining the recognised horse-and-rider silhouette with a clear, direct instruction that every driver understands at a glance.</p>
+        <p class="section-p" style="margin-top:1rem">Available in A4 and A3, each sign is individually produced to the highest print standard. The 2mm board provides rigidity without weight, making it perfect for gate and post mounting on private land.</p>
+        <div style="margin-top:2.5rem">
+          <a href="#register" class="btn btn-accent">Register Your Interest →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="pricing-header reveal">
+      <span class="tag">Pricing</span>
+      <h2 class="section-h2">Simple, Transparent Pricing</h2>
+      <p class="section-p">Both sizes printed on premium 2mm Foamex. Price includes UK mainland delivery.</p>
+    </div>
+    <div class="pricing-cards">
+      <div class="p-card reveal">
+        <div class="p-size">A4</div>
+        <div class="p-dims">210 × 297 mm</div>
+        <div class="p-price"><sup>£</sup>45</div>
+        <div class="p-vat">inc. VAT &amp; UK delivery</div>
+        <ul class="p-features">
+          <li>2mm Foamex board</li>
+          <li>Full-colour UV print</li>
+          <li>Weather resistant</li>
+          <li>Ideal for posts &amp; gates</li>
+        </ul>
+        <a href="#register" class="btn btn-ghost" style="width:100%;justify-content:center">Register Interest</a>
+      </div>
+      <div class="p-card best reveal reveal-d1">
+        <div class="best-label">Most Visible</div>
+        <div class="p-size">A3</div>
+        <div class="p-dims">297 × 420 mm</div>
+        <div class="p-price"><sup>£</sup>55</div>
+        <div class="p-vat">inc. VAT &amp; UK delivery</div>
+        <ul class="p-features">
+          <li>2mm Foamex board</li>
+          <li>Full-colour UV print</li>
+          <li>Weather resistant</li>
+          <li>Maximum road visibility</li>
+        </ul>
+        <a href="#register" class="btn btn-accent" style="width:100%;justify-content:center">Register Interest</a>
+      </div>
+    </div>
+    <p class="pricing-note reveal">This is a registration of interest only. No payment is taken at this stage — FM Signs will contact you to confirm your order, answer any questions, and arrange payment securely.</p>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="legal-section" id="legal">
+  <div class="legal-inner">
+    <div class="legal-banner reveal">
+      <div class="legal-icon-wrap">⚖️</div>
+      <div>
+        <h3>Important Legal Notice — Please Read Before Ordering</h3>
+        <p><strong>FM Signs does not condone the unlawful placement of signage on public roads, public land, or land for which you do not have permission.</strong> This product is designed and sold for use on <strong>private land only</strong>. It is the sole responsibility of the purchaser to ensure lawful placement.</p>
+      </div>
+    </div>
+    <div class="legal-detail reveal">
+      <p>The placement of signs on public highways in the United Kingdom is governed by strict legislation, including:</p>
+      <ul>
+        <li>The <strong>Traffic Signs Regulations and General Directions 2016</strong> (TSRGD)</li>
+        <li>The <strong>Highways Act 1980</strong></li>
+        <li>The <strong>Town and Country Planning Act 1990</strong> (advertisement consent)</li>
+      </ul>
+      <p>Unauthorised signs on public roads or verges may be <strong>illegal and subject to removal by the local authority or Highways England</strong>. Placing signs without appropriate consent could result in fines or enforcement action.</p>
+      <p>Suitable locations for this sign include private farm tracks, private driveways, stable yards, paddocks, and any land where the landowner's express written permission has been obtained. If you are unsure whether placement is lawful, please consult your local council or a qualified legal adviser before purchasing.</p>
+      <p><strong>FM Signs accepts no liability for signage placed unlawfully or without appropriate authority.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="register">
+  <div class="form-outer">
+    <div class="form-header reveal">
+      <span class="tag">Register Interest</span>
+      <h2 class="section-h2">Be Among the First to Order</h2>
+      <p class="section-p">High demand — leave your details and we'll be in touch within 2–5 working days to confirm your order. No payment required now.</p>
+    </div>
+    <div class="form-card reveal">
+      <form id="interestForm" action="https://formspree.io/f/mzdwkewy" method="POST">
+        <input type="hidden" name="_subject" value="New Horse Sign Interest — FM Signs">
+
+        <div class="form-row">
+          <div class="fg half">
+            <label class="fl" for="fname">First Name *</label>
+            <input type="text" id="fname" name="first_name" required placeholder="Jane">
+          </div>
+          <div class="fg half">
+            <label class="fl" for="lname">Last Name *</label>
+            <input type="text" id="lname" name="last_name" required placeholder="Smith">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="fg half">
+            <label class="fl" for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com">
+          </div>
+          <div class="fg half">
+            <label class="fl" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000">
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="fl" style="margin-bottom:0.6rem">Preferred Size *</label>
+          <div class="size-sel">
+            <div class="sz-opt">
+              <input type="radio" id="sA4" name="size" value="A4 — £45" required>
+              <label for="sA4">
+                <span class="sz-size">A4</span>
+                <span class="sz-dim">210 × 297 mm</span>
+                <span class="sz-price">£45</span>
+              </label>
+            </div>
+            <div class="sz-opt">
+              <input type="radio" id="sA3" name="size" value="A3 — £55">
+              <label for="sA3">
+                <span class="sz-size">A3</span>
+                <span class="sz-dim">297 × 420 mm</span>
+                <span class="sz-price">£55</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="fg half">
+            <label class="fl" for="qty">Quantity</label>
+            <select id="qty" name="quantity">
+              <option value="1">1 sign</option>
+              <option value="2">2 signs</option>
+              <option value="3">3 signs</option>
+              <option value="4">4 signs</option>
+              <option value="5+">5 or more</option>
+            </select>
+          </div>
+          <div class="fg half">
+            <label class="fl" for="postcode">Your Postcode</label>
+            <input type="text" id="postcode" name="postcode" placeholder="e.g. OX5 1AB">
+          </div>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="msg">Anything else?</label>
+          <textarea id="msg" name="message" placeholder="Location context, specific requirements, or questions…"></textarea>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="lc" name="legal_consent" value="Confirmed" required>
+          <label class="fl" for="lc">I confirm I have read the <a href="#legal">Legal Notice</a> above. I understand this sign is for use on <strong>private land only</strong>. I accept full responsibility for ensuring lawful placement in compliance with UK legislation, and acknowledge FM Signs does not condone illegal sign placement. *</label>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="mc" name="marketing" value="Yes">
+          <label class="fl" for="mc">I'm happy for FM Signs to contact me about this and future products. Your details will never be shared with third parties.</label>
+        </div>
+
+        <div class="form-foot">
+          <p class="form-note">No payment taken at this stage.<br>We'll confirm your order before any charge is made.</p>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Submit Interest
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-layout">
+    <div class="faq-header reveal">
+      <span class="tag">FAQ</span>
+      <h2 class="section-h2">Common Questions</h2>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">Can I put this sign on a public road?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">No. This sign is for private land only. Placing unauthorised signs on public highways is illegal under UK law. Please consult your local council or Highways England if you are uncertain about signage rules.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">How do I fix the sign in place?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">Foamex signs are lightweight and simple to install. Use screws through the board into a wooden post or gate, cable ties on fencing, or heavy-duty outdoor adhesive pads. We recommend pre-drilling corner holes for screw mounting.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">Is it weatherproof?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">Yes. 2mm Foamex with UV-printed graphics is engineered for outdoor use. It resists rain, UV fading, and temperature variation — suitable for year-round UK outdoor display.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">When will I be contacted after registering?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">We aim to follow up all registrations within 2–5 working days. No payment is required at this stage — we'll confirm availability, answer questions, and guide you through completing your order.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">Can I order multiple signs?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">Yes. Indicate your preferred quantity in the form. For orders of 5 or more, mention this in the message field and we'll discuss volume options with you.</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-btn" onclick="faq(this)">Do you deliver across the UK?<span class="faq-chevron">+</span></button>
+      <div class="faq-ans">Yes, pricing includes UK mainland delivery. For Northern Ireland, Scottish Highlands, and island locations, please note your postcode in the form and we'll confirm any delivery costs before taking payment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand"><span class="nav-logo-dot"></span>FM Signs</div>
+    <ul class="footer-links">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#material">Material</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#legal">Legal Notice</a></li>
+      <li><a href="#register">Register Interest</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    © 2026 FM Signs. All rights reserved. This product is intended for use on private land only. FM Signs does not condone the unlawful placement of signage on public highways or land without appropriate authority. Purchasers are solely responsible for compliance with UK legislation including the Traffic Signs Regulations and General Directions 2016, the Highways Act 1980, and the Town and Country Planning Act 1990.
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}
+  })
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// FAQ
+function faq(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// Form submit
+const form=document.getElementById('interestForm');
+const submitBtn=document.getElementById('submitBtn');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  submitBtn.disabled=true;
+  submitBtn.innerHTML='Sending… <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(res.ok){
+      form.parentElement.innerHTML=`
+        <div style="text-align:center;padding:4rem 2rem">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.3);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.5rem">✓</div>
+          <h3 style="font-family:Syne,sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem">Interest Registered</h3>
+          <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.7;max-width:400px;margin:0 auto">Thank you! We'll be in touch within 2–5 working days to confirm your order. No payment has been taken.</p>
+        </div>`;
+    } else {
+      submitBtn.disabled=false;
+      submitBtn.innerHTML='Try Again →';
+      alert('Something went wrong — please try again.');
+    }
+  }catch{
+    submitBtn.disabled=false;
+    submitBtn.innerHTML='Try Again →';
+    alert('Network error — please check your connection and try again.');
+  }
+});
+</script>
+</body>
+</html>
