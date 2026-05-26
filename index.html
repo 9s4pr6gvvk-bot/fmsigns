@@ -601,6 +601,81 @@ footer{
   color:var(--accent);
   white-space:nowrap;
 }
+
+/* ─── CONTACT LIGHTBOX ─── */
+.lb-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(5,8,15,0.85);
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.3s ease;
+}
+.lb-overlay.open{opacity:1;pointer-events:all}
+.lb-box{
+  background:var(--card);
+  border:1px solid var(--border2);
+  border-radius:20px;
+  padding:2.75rem;
+  width:100%;max-width:520px;
+  position:relative;
+  box-shadow:0 40px 100px rgba(0,0,0,0.5);
+  transform:translateY(20px) scale(0.97);
+  transition:transform 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+.lb-overlay.open .lb-box{transform:translateY(0) scale(1)}
+.lb-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.06);border:1px solid var(--border2);
+  color:var(--muted);font-size:1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background 0.2s,color 0.2s;
+}
+.lb-close:hover{background:rgba(255,255,255,0.12);color:var(--white)}
+.lb-tag{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;
+}
+.lb-tag::before{content:'';width:14px;height:2px;background:var(--accent);border-radius:1px}
+.lb-title{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;
+  letter-spacing:-0.03em;color:var(--white);margin-bottom:0.4rem;
+}
+.lb-sub{font-size:0.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.lb-form .fg{margin-bottom:1rem}
+.lb-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.lb-send{
+  width:100%;background:var(--accent);color:var(--ink);
+  font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:0.88rem;
+  letter-spacing:0.02em;padding:0.9rem;
+  border:none;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  transition:all 0.2s;margin-top:0.5rem;
+}
+.lb-send:hover{background:#f5ff70;transform:translateY(-1px);box-shadow:0 8px 24px rgba(232,255,71,0.25)}
+.lb-send:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.btn-contact{
+  background:transparent;color:var(--white);
+  font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:0.8rem;
+  letter-spacing:0.01em;
+  border:1px solid var(--border2);border-radius:6px;
+  padding:0.5rem 1.1rem;cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;
+  transition:all 0.2s;
+}
+.btn-contact:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.25)}
+.btn-contact-footer{
+  background:rgba(255,255,255,0.06);color:var(--white);
+  font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:0.8rem;
+  border:1px solid var(--border);border-radius:6px;
+  padding:0.55rem 1.2rem;cursor:pointer;
+  text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;
+  transition:all 0.2s;
+}
+.btn-contact-footer:hover{background:rgba(255,255,255,0.1);border-color:var(--border2)}
 </style>
 </head>
 <body>
@@ -614,6 +689,7 @@ footer{
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#legal">Legal</a></li>
     <li><a href="#register" class="nav-cta">Register Interest</a></li>
+    <li><button class="btn-contact" onclick="openContact()">✉ Contact</button></li>
   </ul>
 </nav>
 
@@ -913,7 +989,7 @@ footer{
 
         <div class="bulk-note reveal">
           <span class="bulk-icon">🏷️</span>
-          <span><strong>Ordering 5 or more?</strong> Get in touch — we offer discounts on larger orders and can discuss custom quantities to suit your needs.</span>
+          <span><strong>Ordering multiple?</strong> Get in touch, we offer discounts on larger orders and can discuss custom quantities to suit your needs.</span>
         </div>
 
         <div class="fg">
@@ -988,6 +1064,7 @@ footer{
 <footer>
   <div class="footer-top">
     <div class="footer-brand"><span class="nav-logo-dot"></span>FM Signs</div>
+    <button class="btn-contact-footer" onclick="openContact()">✉ Contact Us</button>
     <ul class="footer-links">
       <li><a href="#product">Product</a></li>
       <li><a href="#material">Material</a></li>
@@ -1032,7 +1109,7 @@ form.addEventListener('submit',async e=>{
         <div style="text-align:center;padding:4rem 2rem">
           <div style="width:64px;height:64px;border-radius:50%;background:rgba(232,255,71,0.1);border:1px solid rgba(232,255,71,0.3);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1.5rem">✓</div>
           <h3 style="font-family:Syne,sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem">Interest Registered</h3>
-          <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.7;max-width:400px;margin:0 auto">Thank you! We'll be in touch within 2–5 working days to confirm your order. No payment has been taken.</p>
+          <p style="color:rgba(255,255,255,0.55);font-size:0.95rem;line-height:1.7;max-width:400px;margin:0 auto">Thank you! We will be in touch within 2–5 working days to confirm your order. No payment has been taken.</p>
         </div>`;
     } else {
       submitBtn.disabled=false;
@@ -1045,6 +1122,70 @@ form.addEventListener('submit',async e=>{
     alert('Network error — please check your connection and try again.');
   }
 });
+
+// Contact lightbox
+function openContact(){document.getElementById('contactLB').classList.add('open');document.body.style.overflow='hidden'}
+function closeContact(){document.getElementById('contactLB').classList.remove('open');document.body.style.overflow=''}
+function closeLBOutside(e){if(e.target===document.getElementById('contactLB'))closeContact()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact()});
+
+// Contact form submit — defer until DOM fully loaded
+document.addEventListener('DOMContentLoaded',function(){
+  var cForm=document.getElementById('contactForm');
+  var cBtn=document.getElementById('contactSendBtn');
+  if(!cForm||!cBtn)return;
+  cForm.addEventListener('submit',async function(e){
+    e.preventDefault();
+    cBtn.disabled=true;
+    cBtn.textContent='Sending…';
+    try{
+      var res=await fetch(cForm.action,{method:'POST',body:new FormData(cForm),headers:{Accept:'application/json'}});
+      if(res.ok){
+        cForm.innerHTML='<div style="text-align:center;padding:2rem 0"><div style="font-size:2rem;margin-bottom:1rem">✓</div><h3 style="font-family:Syne,sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:0.5rem">Message Sent</h3><p style="color:rgba(255,255,255,0.55);font-size:0.88rem">We will be in touch shortly.</p></div>';
+      }else{cBtn.disabled=false;cBtn.textContent='Try Again';}
+    }catch(err){cBtn.disabled=false;cBtn.textContent='Try Again';}
+  });
+});
+
 </script>
+
+<!-- CONTACT LIGHTBOX -->
+<div class="lb-overlay" id="contactLB" onclick="closeLBOutside(event)">
+  <div class="lb-box">
+    <button class="lb-close" onclick="closeContact()">✕</button>
+    <span class="lb-tag">Get in Touch</span>
+    <h2 class="lb-title">Contact FM Signs</h2>
+    <p class="lb-sub">Questions about the sign, customisation, bulk orders, or anything else — drop us a message and we'll get back to you.</p>
+    <form class="lb-form" id="contactForm" action="https://formspree.io/f/mzdwkewy" method="POST">
+      <input type="hidden" name="_subject" value="Contact Enquiry — FM Signs">
+      <div class="form-row">
+        <div class="fg">
+          <label class="fl" for="cb_fname">First Name *</label>
+          <input type="text" id="cb_fname" name="first_name" required placeholder="Jane">
+        </div>
+        <div class="fg">
+          <label class="fl" for="cb_lname">Last Name *</label>
+          <input type="text" id="cb_lname" name="last_name" required placeholder="Smith">
+        </div>
+      </div>
+      <div class="fg">
+        <label class="fl" for="cb_email">Email Address *</label>
+        <input type="email" id="cb_email" name="email" required placeholder="jane@example.com">
+      </div>
+      <div class="fg">
+        <label class="fl" for="cb_phone">Phone Number</label>
+        <input type="tel" id="cb_phone" name="phone" placeholder="+44 7700 000000">
+      </div>
+      <div class="fg">
+        <label class="fl" for="cb_msg">Message *</label>
+        <textarea id="cb_msg" name="message" required placeholder="How can we help?" style="min-height:90px"></textarea>
+      </div>
+      <button type="submit" class="lb-send" id="contactSendBtn">
+        Send Message
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
