@@ -79,18 +79,31 @@ nav{
   display:grid;grid-template-columns:1fr 1fr;
   position:relative;overflow:hidden;
 }
+.hero-bg-img{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('https://images.unsplash.com/photo-1761271709810-a2a14ce81cbd?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center / cover no-repeat;
+}
+.hero-bg-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(10,13,20,0.93) 0%,
+    rgba(10,13,20,0.82) 45%,
+    rgba(10,13,20,0.58) 100%
+  );
+}
 .hero-bg-grid{
-  position:absolute;inset:0;pointer-events:none;
+  position:absolute;inset:0;pointer-events:none;z-index:1;
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
   background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+  mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,black,transparent);
 }
 .hero-glow{
   position:absolute;top:-200px;left:-200px;
-  width:700px;height:700px;
-  background:radial-gradient(circle,rgba(232,255,71,0.06) 0%,transparent 65%);
+  width:700px;height:700px;z-index:1;
+  background:radial-gradient(circle,rgba(232,255,71,0.08) 0%,transparent 65%);
   pointer-events:none;
 }
 .hero-left{
@@ -547,6 +560,19 @@ footer{
   .form-foot{flex-direction:column;align-items:stretch}
   .btn-submit{justify-content:center}
 }
+
+/* ─── BULK NOTE ─── */
+.bulk-note{
+  display:flex;align-items:flex-start;gap:0.85rem;
+  background:rgba(232,255,71,0.06);
+  border:1px solid rgba(232,255,71,0.2);
+  border-radius:10px;
+  padding:1rem 1.25rem;
+  font-size:0.88rem;line-height:1.6;color:var(--body);
+  margin-bottom:1.25rem;
+}
+.bulk-icon{font-size:1.1rem;flex-shrink:0;margin-top:0.05rem}
+.bulk-note strong{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -565,6 +591,7 @@ footer{
 
 <!-- HERO -->
 <section class="hero" id="product">
+  <div class="hero-bg-img"></div>
   <div class="hero-bg-grid"></div>
   <div class="hero-glow"></div>
 
@@ -663,7 +690,7 @@ footer{
         <span class="tag">Premium Material</span>
         <h2 class="section-h2">Built to Last in Any<br>UK Weather</h2>
       </div>
-      <p class="section-p reveal" style="max-width:320px;text-align:right">2mm Foamex PVC foam board — the industry standard for professional outdoor signage.</p>
+      <p class="section-p reveal" style="max-width:320px;text-align:right">2mm Foamex PVC foam board — tough, lightweight, and built to handle whatever the British weather throws at it.</p>
     </div>
     <div class="material-grid">
       <div class="material-card reveal">
@@ -847,7 +874,7 @@ footer{
               <option value="2">2 signs</option>
               <option value="3">3 signs</option>
               <option value="4">4 signs</option>
-              <option value="5+">5 or more</option>
+              <option value="5+">5 or more — ask about bulk discount</option>
             </select>
           </div>
           <div class="fg half">
@@ -856,9 +883,19 @@ footer{
           </div>
         </div>
 
+        <div class="bulk-note reveal">
+          <span class="bulk-icon">🏷️</span>
+          <span><strong>Ordering 5 or more?</strong> Get in touch — we offer discounts on larger orders and can discuss custom quantities to suit your needs.</span>
+        </div>
+
+        <div class="fg">
+          <label class="fl" for="custom_sign">Need a different sign? Tell us what you have in mind</label>
+          <textarea id="custom_sign" name="custom_sign_request" placeholder="e.g. "Slow — Livestock crossing", "Private road — no entry", or describe your idea and we'll get back to you with a quote…"></textarea>
+        </div>
+
         <div class="fg">
           <label class="fl" for="msg">Anything else?</label>
-          <textarea id="msg" name="message" placeholder="Location context, specific requirements, or questions…"></textarea>
+          <textarea id="msg" name="message" placeholder="Location context, specific requirements, or any other questions…"></textarea>
         </div>
 
         <div class="divider"></div>
